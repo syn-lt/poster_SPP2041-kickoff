@@ -1,0 +1,63 @@
+
+\usepackage[%
+  backend=bibtex,        % needed for compilation
+  style=numeric,         % authoryear-comp maybe?
+  sorting=none,
+  minbibnames=5,
+  maxbibnames=5,
+  defernumbers=true,
+  firstinits=true,
+  %% url=true,           %
+  %% maxbibnames=99,     %
+  doi=false,           %
+  %% maxcitenames=2,     %
+  %% dashed=false,       %  (1)
+]{biblatex}
+
+
+% (1): no dash for same authors in biblography: 
+%      
+%       John Doe 2012  ->   John Doe 2012
+%       ----  2013          John Doe 2013
+
+
+\DeclareFieldFormat*{urldate}{}
+
+\AtEveryBibitem{%
+  \ifentrytype{misc}{%
+  }{%
+    \clearfield{url}%
+  }%
+}
+
+
+\AtEveryBibitem{\clearlist{language}}
+\AtEveryBibitem{\ifentrytype{article}{\clearfield{issn}}{}}
+\AtEveryBibitem{\clearfield{month}}
+%\AtEveryBibitem{\clearfield{pages}}
+%\AtEveryBibitem{\clearfield{number}}
+%\AtEveryBibitem{\clearfield{volume}}
+\AtEveryBibitem{\clearfield{eprint}}
+\AtEveryBibitem{\clearfield{isbn}}
+\AtEveryBibitem{\clearfield{shorttitle}}
+\AtEveryBibitem{\clearfield{note}}
+
+
+% removes quotation marks for article titles
+\DeclareFieldFormat[article, incollection, inproceedings]{title}{#1} 
+
+% set the distances between bib items
+\setlength\bibitemsep{3.9pt}
+
+% % Links to DOIs
+% % see http://tex.stackexchange.com/questions/23832
+% \ExecuteBibliographyOptions{doi=false}
+% \newbibmacro{string+doi}[1]{%
+%   \iffieldundef{doi}{#1}{\href{http://dx.doi.org/\thefield{doi}}{#1}}}
+% \DeclareFieldFormat{title}{\usebibmacro{string+doi}{\mkbibemph{#1}}}
+% \DeclareFieldFormat[article,incollection]{title}{\usebibmacro{string+doi}{#1}}
+
+\renewcommand*{\bibfont}{\footnotesize}
+
+\bibliography{main}
+%\bibliography{\string~/lib/main_bibtex}

@@ -1,0 +1,8 @@
+\newcommand{\E}{\operatorname{\mathbf{E}}}
+\newcommand{\Var}{\operatorname{\mathbf{Var}}}
+\newcommand{\Prob}{\operatorname{\mathbf{Prob}}}
+
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
