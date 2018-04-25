@@ -31,7 +31,7 @@ We simulated \SI{5e5} synapses evolving as Kesten processes and recorded lifetim
 \vspace{1.2cm}
 \begin{overpic}[width=\columnwidth]%
   % 110, 133
-  {figures/lifetimes_weights.png}
+  {figures/lifetimes_weights.pdf}
   %\put(32,\ylin){anisotropic}
   \put(1,28){\normalfont \textbf{A}}
   \put(52,28){\normalfont \textbf{B}}
@@ -49,16 +49,20 @@ We simulated \SI{5e5} synapses evolving as Kesten processes and recorded lifetim
 %%   \label{fig:lifetimes}
 %% \end{center}\vspace{1cm}
 
-Next, we explored how different parameters in the model affect the lifetime and spine size distributions. We found that varying $\sigma_b^2$ has little effect on the distributions. Interestingly, however, the bias in the additive change affect both distributions significantly. As one might expect . This result also 
+Next, we explored how different parameters in the model affect the lifetime and spine size distributions. We found that varying $\sigma_b^2$ has little effect on the distributions. Interestingly however, the bias in the additive change affect both distributions significantly. As one might expect, a bias towards increases in size moves the tail of the lifetime distribution towards higher lifetimes (Fig.~\ref{fig:lifemub}A) while shifting the mean of spine size towards higher values (Fig.~\ref{fig:lifemub}B).
 
-\begin{center}\vspace{1cm}
-  \includegraphics[width=\columnwidth]{%
-%% /home/fh/sci/lab/syn_lt/kesten_model/note_x/km_ca_rts_dd/img/lifetimes_weights_mub_compare.png}
-   figures/lifetimes_weights_mub_compare.png}
-  \captionof{figure}{}
-\end{center}\vspace{1cm}
+  \vspace{2.2cm}
+\begin{overpic}[width=\columnwidth]%
+  % 110, 133
+  {figures/lifetimes_weights_mub_compare.pdf}
+  %\put(32,\ylin){anisotropic}
+  \put(1,28){\normalfont \textbf{A}}
+  \put(52,28){\normalfont \textbf{B}}
+\end{overpic}
+  \captionof{figure}{\label{fig:lifemub}}
 
-
-
+  \vspace{3cm}
+  
+In future work we will compare with .
 
 
