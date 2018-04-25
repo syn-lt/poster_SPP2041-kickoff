@@ -26,10 +26,7 @@ The lifetime of the synapse is the number of time steps from $T_{\text{init}}$ u
 
 \subsection*{Results}
 
-We simulated \SI{5e5} synapses evolving as Kesten processes and recorded lifetime and weight distributions. For unbiased additive change ($\mu_b =0$), a power law like distribution of synaptic lifetimes emerges (Fig~\ref{fig:lifetimes}A). The synaptic weight 
-
-
-d a power law like distribution of arises. At the same time
+We simulated \SI{5e5} synapses evolving as Kesten processes and recorded lifetime and weight distributions. For unbiased additive change ($\mu_b =0$), a power law like distribution of synaptic lifetimes emerges (Fig~\ref{fig:lifetimes}A). The distribution of spine sizes $X_{T_{\text{max}}}$ resembles a log-normal distribution, as one might expect from findings on the synaptic weight distributions in cortical circuits \cite{Song2005}.
 
 \vspace{1.2cm}
 \begin{overpic}[width=\columnwidth]%
@@ -39,10 +36,9 @@ d a power law like distribution of arises. At the same time
   \put(1,28){\normalfont \textbf{A}}
   \put(52,28){\normalfont \textbf{B}}
 \end{overpic}
-  \captionof{figure}{  \label{fig:lifetimes}}
+\captionof{figure}[format=hang,indention=1cm]{Dynamical properties of network connectivity modelled by Kesten processes. \textbf{A} Lifetime distribution of synapses created at time step $T_{\text{init}}$ uniformly distributed in $[0, T_{\text{max}}]$. \textbf{B} Distribution of spine sizes $X_{T_{\text{max}}}$ at time step $X_{T_{\text{max}}}$ (grey) and log-normal fit (red). Parameters for both: $a=0.9987$, $\mu_b=0$, $\sigma_b^2=0.22$, $X_{\text{insert}}=0.1$, $X_{\text{prune}}=0.01$. \label{fig:lifetimes}}
 
-
-\vspace{1cm}
+\vspace{3cm}
 
 %% \begin{center}\vspace{1cm}
 %%   \includegraphics[width=\columnwidth]{%
@@ -53,6 +49,7 @@ d a power law like distribution of arises. At the same time
 %%   \label{fig:lifetimes}
 %% \end{center}\vspace{1cm}
 
+Next, we explored how different parameters in the model affect the lifetime and spine size distributions. We found that varying $\sigma_b^2$ has little effect on the distributions. Interestingly, however, the bias in the additive change affect both distributions significantly. As one might expect . This result also 
 
 \begin{center}\vspace{1cm}
   \includegraphics[width=\columnwidth]{%
@@ -62,6 +59,6 @@ d a power law like distribution of arises. At the same time
 \end{center}\vspace{1cm}
 
 
-\subsection*{Challenges}
+
 
 
