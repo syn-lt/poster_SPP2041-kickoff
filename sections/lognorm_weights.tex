@@ -6,30 +6,72 @@ In cortical circuits the distribution of synaptic weights has been repeatedly re
 
 \section*{Network model}
 
-The network is thus completely noise driven and devoid of correlations.
+
+The network considered here consist of $N$ randomly connected ($p=0.1$) conductance based leaky integrate-and-fire neurons. The
+%
+\begin{align}
+ \tau_m\, \frac{dV}{dt}  = E_l - V + g_e \,(E_e - V) +  \xi_{\mathrm{ext}}(t)
+\end{align}
+%
+with conductance based
+%
+\begin{align}
+ \frac{d ge}{dt} = - \frac{g_e}{\tau_e} +  \Theta_{\text{trans}}\, w \sum_{k} \delta(t-t_k)
+\end{align}
+%
+STDP
+%
+\begin{align}
+ \Delta w =  A_{\text{LTP}} \exp\left(\frac{\Delta t}{\tau_{\text{LTP}}}\right)
+\end{align}
+%
+Synaptic scaling prevents weights from . The incoming are nor
+%
+\begin{align}
+ w 
+\end{align}
+%
+
+
 
 
 
 \section*{Results}
 
-\begin{center}\vspace{1cm}
-  \includegraphics[width=.49\columnwidth]{%
-    figures/syn_lnt_gnw_e07036_16.pdf}
-  \includegraphics[width=.49\columnwidth]{%
-    figures/syn_lnt_gnw_e07036_17.pdf}
-
-  \captionof{figure}{}
-\end{center}\vspace{1cm}
+In the first part we disabled synaptic transmission is explicitly not part of this model as we want test here the developement 
 
 
-\begin{center}\vspace{1cm}
-  \includegraphics[width=.49\columnwidth]{%
-    figures/syn_lnt_gnw_b20efe_0_highmem.pdf}
-  \includegraphics[width=.49\columnwidth]{%
-    figures/syn_lnt_gnw_b20efe_0_lowmem.pdf}
+\vspace{1.2cm}
+\begin{overpic}[width=.49\columnwidth]%
+  % 110, 133
+  {figures/syn_lnt_gnw_e07036_16.pdf}
+  \put(11,60){\normalfont \textbf{A}}
+\end{overpic}
+\begin{overpic}[width=.49\columnwidth]%
+  % 110, 133
+  {figures/syn_lnt_gnw_e07036_17.pdf}
+  \put(11,60){\normalfont \textbf{B}}
+\end{overpic}
+\captionof{figure}{\label{fig:loglorm_LTP}}
+\vspace{3cm}
 
-  \captionof{figure}{$T=\text{\SI{900}{s}}$, LTD=-0.1 LTP}
-\end{center}\vspace{1cm}
+
+
+
+\vspace{1.2cm}
+\begin{overpic}[width=.49\columnwidth]%
+  % 110, 133
+  {figures/syn_lnt_gnw_b20efe_0_highmem.pdf}
+  \put(11,60){\normalfont \textbf{A}}
+\end{overpic}
+\begin{overpic}[width=.49\columnwidth]%
+  % 110, 133
+  {figures/syn_lnt_gnw_b20efe_0_lowmem.pdf}
+  \put(11,60){\normalfont \textbf{B}}
+\end{overpic}
+\captionof{figure}{$T=\text{\SI{900}{s}}$, LTD=-0.1 LTP \label{fig:loglorm_rec}}
+\vspace{3cm}
+
 
 
 \section*{Coupled Networks}
