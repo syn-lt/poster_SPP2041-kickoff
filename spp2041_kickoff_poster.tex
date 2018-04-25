@@ -47,6 +47,7 @@
 %% \usepackage{palatino} % Uncomment to use the Palatino fon
 
 \usepackage{graphicx} % Required for including images
+\usepackage{overpic}
 \graphicspath{{figures/}} % Location of the graphics files
 \usepackage{booktabs} % Top and bottom rules for table
 \usepackage[font=small,labelfont=bf]{caption} % Required for
@@ -66,6 +67,9 @@
 \usepackage{bibconfig}
 
 \usepackage{titlesec}
+
+\usepackage{siunitx}
+\sisetup{detect-all}
 
 \titlespacing*{\section}
 {0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
@@ -127,9 +131,9 @@ $\quad ^2$International Max Planck Research School for Neural Circuits, Max Plan
 \begin{multicols}{2} % This is how many columns your poster will be
                      % broken into, a portrait poster is generally
                      % split into 2 columns
-
-  \input{sections/lognorm_weights}
   \input{sections/lifetimes}
+  \input{sections/lognorm_weights}
+
   
   \printbibliography  
 
