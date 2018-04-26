@@ -1,39 +1,34 @@
 \columnbreak
 \section*{\LARGE Log-normal distributions of synaptic weights in noise driven networks}
 
-In cortical circuits the distribution of synaptic weights has been repeatedly reported to be log-normal \cite{Song2005}. in which very few strong weights are embedded in a sea of small weights. A number of computational models address the . Typically the result . Here we are following a hypothesis that not much is needed.
-
+In cortical circuits the distribution of synaptic weights has been repeatedly reported to be log-normal \cite{Song2005}. A number of computational models address the how such a weight distribution might arise from network dynamics. Here we test a hypothesis that log-normal weight distributions emerge from network dynamics in which LTP dominates and in which synaptic scaling takes the role of keeping weights from growing too large.
 
 \section*{Network model}
 
-
-The network considered here consist of $N$ randomly connected ($p=0.1$) conductance based leaky integrate-and-fire neurons. The
+The network considered here consist of $N$ randomly connected ($p=0.1$) conductance based leaky integrate-and-fire neurons. The differential equation for a neuron's membrane voltage $V$ is
 %
 \begin{align}
- \tau_m\, \frac{dV}{dt}  = E_l - V + g_e \,(E_e - V) +  \xi_{\mathrm{ext}}(t)
+ \tau_m\, \frac{dV}{dt}  = E_l - V + g_e \,(E_e - V) +  \xi_{\mathrm{ext}}(t).
 \end{align}
 %
-with conductance based
+When synaptic transmission is active ($\Theta_{\text{trans}}=1$), the conductance $g_e$ is increased by $w_i$ at times $t_i^k$ of spikes from connected neurons with index $i$,
 %
 \begin{align}
- \frac{d ge}{dt} = - \frac{g_e}{\tau_e} +  \Theta_{\text{trans}}\, w \sum_{k} \delta(t-t_k)
+ \frac{d ge}{dt} = - \frac{g_e}{\tau_e} +  \Theta_{\text{trans}}\, \sum_i w_i \sum_{k} \delta(t-t_i^k)
 \end{align}
 %
-STDP
+Spike-timing dependent plasticity is implemented in the form of long-term potentiation (LTP). The weight $w$ changes for $\Delta t = t_{\text{post}}-t_{\text{pre}} > 0$ as
+\begin{align}
+ \Delta w =  A_{\text{LTP}} \exp\left(\frac{\Delta t}{\tau_{\text{LTP}}}\right).
+\end{align}
+%
+Multiplicative synaptic scaling acts homeostatic mechanism and prevents weights from unbounded growth. The incoming weights $w_j$ to a given neuron are scaled as
 %
 \begin{align}
- \Delta w =  A_{\text{LTP}} \exp\left(\frac{\Delta t}{\tau_{\text{LTP}}}\right)
+ w_j \to w_j \left(1+ \eta_{\text{SN}} \left( \frac{W_{\text{target}}}{\sum_k w_k} -1\right) \right),
 \end{align}
 %
-Synaptic scaling prevents weights from . The incoming are nor
-%
-\begin{align}
- w 
-\end{align}
-%
-
-
-
+where $\sum_k w_k$ sums over all incoming weights and $W_target$ is a set target for the sum.
 
 
 \section*{Results}
