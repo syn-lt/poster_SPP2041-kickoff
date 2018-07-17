@@ -1,19 +1,22 @@
 \columnbreak
 \section*{\LARGE Modelling synaptic lifetime distributions with Kesten processes}
 
-In an experimental study by \textcite{Loewenstein2015} chronic in-vivo two-photon imaging revealed that the lifetime dynamics of spines in the neocortex follow a power law. Motivated by results from detailed network simulations, we here consider a simple stochastic model based on the Kesten process in order to analyze how different properties of a cortical network might affect the lifetime distributions of synaptic spines.
+In an experimental study by \textcite{Loewenstein2015} chronic in-vivo two-photon imaging suggested that the lifetime dynamics of spines in the neocortex follow a power law. Motivated by results from detailed network simulations, we here consider a simple stochastic model based on the Kesten process in order to analyze how different properties of a cortical network might affect the lifetime distributions of synaptic spines.
 
-\subsection*{Model}
+\vspace{-0.4cm}
+\section*{Model}
 
-Kesten process have been used before \cite{Statman2014} to describe spine size dynamics. In this model, a given spine size $X_n$ at time step $n$ is updated as
+Kesten processes have been used before \cite{Statman2014} to describe spine size dynamics. In this model, a given spine size $X_n$ at time step $n$ is updated as
 %
 \begin{align}
   X_{n+1} = a_n X_n + b_n. \label{eq:kesten}
 \end{align}
 %
-In this further simplified form we take $a_n$ to be a fixed value of $a_n=0.9987$, while the additive change is drawn from a normal distribution, $b_n \sim \mathcal{N}(\mu_b, \sigma_b^2)$. Then, to model synapse growth and pruning processes, we consider a population of $N$ synapses. Each synapse has a random time $T_{\mathrm{init}}$, uniformly distributed in $[0,T_{\text{max}}]$, at which it is initialized with size $X_0$. The synapse size $X_t$ then evolves according to \eqref{eq:kesten}.
+In this further simplified form we take $a_n$ to be a fixed value of $a_n < 1$, while the additive change is in each time step drawn from a normal distribution, $b_n \sim \mathcal{N}(\mu_b, \sigma_b^2)$. Then, to model synapse growth and pruning processes, we consider a population of $N$ synapses. Each synapse has a random time $T_{\mathrm{init}}$, uniformly distributed in $[0,T_{\text{max}}]$, at which it is initialized with size $X_0$. The synapse size $X_t$ then evolves according to \eqref{eq:kesten}.
 
-The lifetime of the synapse is the number of time steps from $T_{\text{init}}$ until for the first time $X_t < X_{\mathrm{prune}}$. In this case the synapse gets pruned and a new synapse with size $X_0$ is inserted in the network (Fig~\ref{fig:km}). In the case that $X_t$ doesn't fall below $X_{\mathrm{prune}}$ until $T_{\text{max}}$, the lifetime is recorded as $T=T_{\text{max}}-T_{\text{init}}$. At the end of the simulation the sizes $X_{T_{\text{max}}}$ are recorded for all $N$ synapses.
+\medskip
+
+The lifetime of the synapse is the number of time steps from $T_{\text{init}}$ until for the first time $X_t < X_{\mathrm{prune}}$. In this case the synapse gets pruned and a new synapse with size $X_0$ is inserted in the network (Fig.~\ref{fig:km}). In the case that $X_t$ doesn't fall below $X_{\mathrm{prune}}$ until $T_{\text{max}}$, the lifetime is recorded as $T=T_{\text{max}}-T_{\text{init}}$. At the end of the simulation the sizes $X_{T_{\text{max}}}$ are recorded for all $N$ synapses.
 
 \begin{center}\vspace{1cm}
   \includegraphics[width=0.85\columnwidth]{%
@@ -24,9 +27,9 @@ The lifetime of the synapse is the number of time steps from $T_{\text{init}}$ u
 \end{center}\vspace{1cm}
 
 
-\subsection*{Results}
+\section*{Results}
 
-We simulated \SI{5e5} synapses evolving as Kesten processes and recorded lifetime and weight distributions. For unbiased additive change ($\mu_b =0$), a power law like distribution of synaptic lifetimes emerges (Fig~\ref{fig:lifetimes}A). The distribution of spine sizes $X_{T_{\text{max}}}$ resembles a log-normal distribution, as one might expect from findings on the synaptic weight distributions in cortical circuits \cite{Song2005}.
+We simulated \SI{5e5} synapses evolving as Kesten processes and recorded lifetime and weight distributions. For unbiased additive change ($\mu_b =0$), a power law like distribution of synaptic lifetimes emerges (Fig.~\ref{fig:lifetimes}A). The distribution of spine sizes $X_{T_{\text{max}}}$ resembles a log-normal distribution, as one might expect from findings on the synaptic weight distributions in cortical circuits \cite{Song2005}.
 
 \vspace{1.2cm}
 \begin{overpic}[width=\columnwidth]%
@@ -49,9 +52,9 @@ We simulated \SI{5e5} synapses evolving as Kesten processes and recorded lifetim
 %%   \label{fig:lifetimes}
 %% \end{center}\vspace{1cm}
 
-Next, we explored how different parameters in the model affect the lifetime and spine size distributions. We found that varying $\sigma_b^2$ has little effect on the distributions. Interestingly however, the bias in the additive change affects both distributions significantly. As one might expect, a bias towards increases in size moves the tail of the lifetime distribution towards higher lifetimes (Fig.~\ref{fig:lifemub}A) while shifting the mean of spine size towards higher values (Fig.~\ref{fig:lifemub}B).
+Next, we explored how different parameters in the model affect the lifetime and spine size distributions. We found that varying $\sigma_b^2$ has little effect on the distributions. Interestingly however, the bias in the additive change affects both distributions significantly. As one might expect, a bias towards increases in size moves the tail of the lifetime distribution towards higher lifetimes (Fig.~\ref{fig:lifemub}A) while shifting the mean of the spine size towards higher values (Fig.~\ref{fig:lifemub}B). This observation matches qualitatively with preliminary results from detailed network simulations in which a higher bias towards LTP resulted in similarly extended lifetimes.
 
-  \vspace{2.2cm}
+  \vspace{1.4cm}
 \begin{overpic}[width=\columnwidth]%
   % 110, 133
   {figures/lifetimes_weights_mub_compare.pdf}
@@ -61,7 +64,7 @@ Next, we explored how different parameters in the model affect the lifetime and 
 \end{overpic}
   \captionof{figure}{The bias of additive change in size strongly affects both lifetime and weight distributions. \label{fig:lifemub}}
 
-  \vspace{3cm}
+  \vspace{1.8cm}
   
 
 

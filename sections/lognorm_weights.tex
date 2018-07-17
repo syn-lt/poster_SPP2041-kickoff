@@ -1,13 +1,15 @@
 \columnbreak
 \section*{\LARGE Log-normal distributions of synaptic weights in noise driven networks}
 
-In cortical circuits the distribution of synaptic weights has been repeatedly reported to be log-normal \cite{Song2005}. A number of computational models address the how such a weight distribution might arise from network dynamics. Here we test a hypothesis that log-normal weight distributions emerge from network dynamics in which LTP dominates and in which synaptic scaling takes the role of keeping weights from growing too large.
+In cortical circuits the distribution of synaptic weights has been repeatedly reported to be log-normal \cite{Song2005}. A number of computational models address how such a weight distribution might arise from network dynamics. Here we test a hypothesis that log-normal weight distributions emerge from network dynamics in which LTP dominates and in which synaptic scaling takes the role of keeping weights from growing too large.
 
-\vspace{-0.4cm}
+\vspace{-0.5cm}
 
 \section*{Network model}
 
-The network considered here consist of $N$ randomly connected ($p=0.1$) conductance based leaky integrate-and-fire neurons. The differential equation for a neuron's membrane voltage $V$ is
+\vspace{-0.5cm}
+
+The network considered here consists of $N$ randomly connected ($p=0.1$) conductance based leaky integrate-and-fire neurons. The differential equation for a neuron's membrane voltage $V$ is
 %
 \begin{align}
  \tau_m\, \frac{dV}{dt}  = E_l - V + g_e \,(E_e - V) +  \xi_{\mathrm{ext}}(t). \label{eq:mem}
@@ -16,7 +18,7 @@ The network considered here consist of $N$ randomly connected ($p=0.1$) conducta
 When synaptic transmission is active ($\Theta_{\text{trans}}=1$), the conductance $g_e$ is increased by $w_i$ at times $t_i^k$ of spikes from connected neurons with index $i$,
 %
 \begin{align}
- \frac{d ge}{dt} = - \frac{g_e}{\tau_e} +  \Theta_{\text{trans}}\, \sum_i w_i \sum_{k} \delta(t-t_i^k)
+ \frac{d g_e}{dt} = - \frac{g_e}{\tau_e} +  \Theta_{\text{trans}}\, \sum_i w_i \sum_{k} \delta(t-t_i^k)
 \end{align}
 %
 Spike-timing dependent plasticity is implemented in the form of long-term potentiation (LTP). The weight $w$ changes for $\Delta t = t_{\text{post}}-t_{\text{pre}} > 0$ as
@@ -24,7 +26,7 @@ Spike-timing dependent plasticity is implemented in the form of long-term potent
  \Delta w =  A_{\text{LTP}} \exp\left(\frac{\Delta t}{\tau_{\text{LTP}}}\right).
 \end{align}
 %
-Multiplicative synaptic scaling acts homeostatic mechanism and prevents weights from unbounded growth. The incoming weights $w_j$ to a given neuron are scaled as
+Multiplicative synaptic scaling acts as a homeostatic mechanism and prevents weights from unbounded growth. The incoming weights $w_j$ to a given neuron are scaled as
 %
 \begin{align}
  w_j \to w_j \left(1+ \eta_{\text{SN}} \left( \frac{W_{\text{target}}}{\sum_k w_k} -1\right) \right), \label{eq:sc}
@@ -32,9 +34,10 @@ Multiplicative synaptic scaling acts homeostatic mechanism and prevents weights 
 %
 where $\sum_k w_k$ sums over all incoming weights and $W_{\text{target}}$ is a set target for the sum.
 
-\vspace{-0.4cm}
+\vspace{-0.5cm}
 
 \section*{Results}
+\vspace{-0.5cm}
 
 At first we disabled synaptic transmission $\Theta_{\text{trans}}=0$ resulting in network dynamics that are exclusively driven by the membrane noise $\xi_{\text{ext}}(t)$. We found that log-normal like distributions in synaptic weights naturally emerge from the interplay of additive changes through LTP and the scaling of weights through synaptic normalization, when roughly
 %
@@ -54,13 +57,13 @@ that is when the sum of $A_{\text{LTP}}$ for all incoming connections roughly ma
   {figures/syn_lnt_gnw_e07036_17.pdf}
   \put(11,60){\normalfont \textbf{B}}
 \end{overpic}
-\captionof{figure}{In a completely noise-driven network ($N=400$, $p=0.1$, $\Theta_{\text{trans}}=0$), log-normal like distribution emerge when the relation \eqref{eq:rel} roughly holds. \label{fig:lognorm_LTP}}
+\captionof{figure}{In a completely noise-driven network ($N=400$, $p=0.1$, $\Theta_{\text{trans}}=0$), log-normal like distribution emerge when the relation \eqref{eq:rel} roughly holds. Shown is synaptic weight distribution after simulation of $T=\text{\SI{200}{s}}$ (grey) and log-normal fit to data (red). \label{fig:lognorm_LTP}}
 \vspace{2.8cm}
 
 We tested relation \eqref{eq:rel} by, for example, increasing $p$. In this case, to obtain good fits for a log-normal distribution in synaptic weights, $A_{\text{LTP}}$ had to be decreased in accordance with the equation. We found that the rate of synaptic scaling $\eta_{\text{SN}}$ did not significantly affect the shape of the weight distribution.
 \medskip
 
-In the next step, we analyzed a network with an excitatory an inhibitory population, supplementing equations \eqref{eq:mem}-\eqref{eq:sc} in the typical way and additional adding long-term depression (LTD) for $\Delta t < 0$. First results here indicate that when LTP dominates over LTD ($A_{\text{LTP}} = 10 A_{\text{LTD}}$)a reduction of membrane noise lets log-normal like distribution in synaptic weights emerge more clearly (Fig.~\ref{fig:loglorm_rec}). Correlated activity might thus play a crucial in forming the long tailed distributions of weights observed in the cortical networks.
+In the next step, we analyzed a network with an excitatory an inhibitory population, supplementing equations \eqref{eq:mem}-\eqref{eq:sc} in the typical way and additionally adding long-term depression (LTD) for $\Delta t < 0$. First results here indicate that when LTP dominates over LTD ($A_{\text{LTP}} = 10\, A_{\text{LTD}}$) a reduction of membrane noise lets log-normal like distribution in synaptic weights emerge more clearly (Fig.~\ref{fig:loglorm_rec}). Correlated activity might thus play a crucial in forming the long tailed distributions of weights observed in cortical networks.
 
 
 \vspace{1cm}
